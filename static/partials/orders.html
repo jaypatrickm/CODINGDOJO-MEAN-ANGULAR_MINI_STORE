@@ -1,0 +1,65 @@
+<div ng-controller="ordersController">
+	<div class="row">
+		<div class="col-sm-12">
+			<h1>ADD A NEW ORDER</h1>
+			<h3 id="error"></h3>
+			<ul>
+				<li>
+					<h2>Customer</h2>
+					<h5>Name</h5>
+					<select class="form-control" ng-model='newOrder.name'>
+						<option value="">--SELECT--</option>
+						<option ng-repeat="customer in customers" value="{{customer.name}}">{{customer.name}}</option>
+					</select>
+				</li>
+				<li>
+					<h2>Order</h2>
+					<h5>Qty</h5>
+					<select class="form-control" ng-model='newOrder.qty'>
+						<option value="">--SELECT--</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+					</select>
+					<h5>Product</h5>
+					<select class="form-control" ng-model='newOrder.product'>
+						<option value="">--SELECT--</option>
+						<option value="Coffee Gun">Coffee Gun</option>
+						<option value="Inflatable Shoes">Inflatable Shoes</option>
+						<option value="Cactus Helmet">Cactus Helmet</option>
+						<option value="Viking Powder">Viking Powder</option>
+						<option value="Sword Shrinker">Sword Shrinker</option>
+						<option value="Peanut Butter">Peanut Butter</option>
+					</select>
+					<input type="submit" class="btn btn-default" ng-click='addOrder()'/>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<input type="text" ng-model="filter_name" placeholder="search name...">
+			<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Customer Name</th>
+						<th>Product</th>
+						<th>Qty</th>
+						<th>Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="order in orders | filter : filter_name | orderBy:'created_date'">
+						<td><span ng-bind='order.name'></span></td>
+						<td><span ng-bind='order.product'></span></td>
+						<td><span ng-bind='order.qty'></span></td>
+						<td><span ng-bind='order.created_date'></span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

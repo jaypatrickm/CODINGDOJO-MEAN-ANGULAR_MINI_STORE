@@ -1,0 +1,6 @@
+{
+  "name": "Angular_Mini_Store",
+  "dependencies": {
+    "express": "^4.10.0"
+  }
+}
